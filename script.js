@@ -31,8 +31,14 @@ function setIndicator(color){
 
 }
 
-function getRndInteger(min,max){
-    return Math.floor(Math.random()*(max-min))+max;
+
+function getRndInteger(min, max) {
+  // Ensure max is strictly greater than min
+  if (max <= min) {
+      throw new Error("max must be greater than min");
+  }
+  // Generate a random integer in the range [min, max)
+  return Math.floor(Math.random() * (max - min)) + min;
 }
 
 function generateRandomNumber(){
@@ -76,25 +82,43 @@ function calcStrength(){
 }
 
 //copyBTn works
- async function  copyContent(){
-  try{
-    await navigator.clipboard.writeText(passwordDisplay.value);
-    copyMsg.innerText="copied";
+async function copyContent() {
+  try {
+      // Check if the Clipboard API is available
+      if (navigator.clipboard) {
+          await navigator.clipboard.writeText(passwordDisplay.value);
+          copyMsg.innerText = "Copied!";
+      } else {
+          // Fallback for older browsers
+          const textarea = document.createElement('textarea');
+          textarea.value = passwordDisplay.value;
+          document.body.appendChild(textarea);
+          textarea.select();
+          document.execCommand('copy');
+          document.body.removeChild(textarea);
+          copyMsg.innerText = "Copied!";
+      }
+  } catch (e) {
+      // Log the error to understand what went wrong
+      console.error("Failed  ", e);
+      copyMsg.innerText = "Failed ";
   }
-  catch(e){
-         copyMsg.innerText="failed";
-  }
-  //to make copy wala span visible
+
+  // Show the copy message
   copyMsg.classList.add("active");
-    //time 
-  setTimeout(() =>{
-    copyMsg.classList.remove("active");
-  },2000);
+
+  // Hide the copy message after 2 seconds
+  setTimeout(() => {
+      copyMsg.classList.remove("active");
+  }, 2000);
 }
+
+
 
 //shuffle password
 function shufflePassword(array){
    //Fisher Yates Method
+   
    for (let i = array.length - 1; i > 0; i--) {
     //random J, find out using random function
     const j = Math.floor(Math.random() * (i + 1));
@@ -172,16 +196,23 @@ generateBtn.addEventListener('click',()=>{
     funcArr.push(generateRandomNumber);
   if(symbolsCheck.checked)
     funcArr.push(generateSymbol);
+  
+  console.log(funcArr);
+
+  if (funcArr.length === 0) {
+    console.error("Function array is empty.");
+    return;
+}
   //compulsary addition
   for(let i=0;i<funcArr.length;i++){
     password+=funcArr[i]();
   }
   console.log("compulusry");
   //remaing 
-  for(let i=0;i<passwordLength-funcArr.length;i++){
-    let randIndex=getRndInteger(0,funcArr.length);
-    password+=funcArr[randIndex]();
-  }
+  for (let i = 0; i < passwordLength - funcArr.length; i++) {
+    let randIndex = getRndInteger(0, funcArr.length);
+    password += funcArr[randIndex]();
+}
   console.log("remaing");
 
   //suffle password
