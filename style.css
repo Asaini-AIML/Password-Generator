@@ -257,3 +257,154 @@ h1{
     background-color: var(--dk-violet);
     box-shadow: 0px 0px 25px 5px rgba(255, 229, 61, 0.80);
 }
+
+/* Base styles (already defined by you) */
+/* Add your existing styles here */
+
+/* Media Queries */
+
+/* Medium devices (tablets, 768px and up) */
+@media (max-width: 768px) {
+    /* Adjust container width for medium devices */
+    .container {
+        max-width: 80%;
+    }
+
+    /* Adjust font size for headings and other text elements */
+    h1 {
+        font-size: 1.75rem;
+    }
+
+    .display {
+        font-size: 1.25rem;
+    }
+
+    .length-container p,
+    .strength-container p,
+    .check label {
+        font-size: 1.2rem;
+    }
+
+    .generateButton {
+        font-size: 1.15rem;
+    }
+
+    /* Adjust button and slider sizes */
+    .slider::-webkit-slider-thumb {
+        height: 1.75rem;
+        width: 1.75rem;
+    }
+
+    .indicator {
+        width: 1.25rem;
+        height: 1.25rem;
+    }
+
+    /* Adjust padding for smaller elements */
+    .input-container {
+        padding: 1.5rem;
+    }
+}
+
+/* Small devices (phones, 576px and up) */
+@media (max-width: 576px) {
+    /* Adjust container width for small devices */
+    .container {
+        max-width: 95%;
+    }
+
+    /* Adjust font size for smaller devices */
+    h1 {
+        font-size: 1.5rem;
+    }
+
+    .display {
+        font-size: 1rem;
+    }
+
+    .length-container p,
+    .strength-container p,
+    .check label {
+        font-size: 1rem;
+    }
+
+    .generateButton {
+        font-size: 1rem;
+    }
+
+    /* Adjust slider and button sizes */
+    .slider::-webkit-slider-thumb {
+        height: 1.5rem;
+        width: 1.5rem;
+    }
+
+    .indicator {
+        width: 1rem;
+        height: 1rem;
+    }
+
+    /* Adjust padding and margin for smaller elements */
+    .input-container {
+        padding: 1rem;
+    }
+
+    .display-container {
+        margin: 0.75rem 0;
+    }
+
+    .strength-container {
+        margin: 1.25rem;
+    }
+
+    /* Adjust spacing and gaps */
+    .check {
+        gap: 0.75rem;
+    }
+}
+
+/* Extra Small devices (phones, less than 480px) */
+@media (max-width: 480px) {
+    /* Further adjustments for very small devices */
+    h1 {
+        font-size: 1.25rem;
+    }
+
+    .display {
+        font-size: 0.9rem;
+    }
+
+    .length-container p,
+    .strength-container p,
+    .check label {
+        font-size: 0.9rem;
+    }
+
+    .generateButton {
+        font-size: 0.9rem;
+    }
+
+    /* Adjust slider and button sizes */
+    .slider::-webkit-slider-thumb {
+        height: 1.25rem;
+        width: 1.25rem;
+    }
+
+    .indicator {
+        width: 0.75rem;
+        height: 0.75rem;
+    }
+
+    /* Adjust padding and margin for smaller elements */
+    .input-container {
+        padding: 0.75rem;
+    }
+
+    .display-container {
+        padding-top: 0.25rem;
+    }
+
+    /* Adjust spacing and gaps */
+    .check {
+        gap: 0.5rem;
+    }
+}
